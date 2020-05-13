@@ -14,9 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/contact', function () {
-    return view('welcome');
-});
-Route::get('/category', function () {
-    return view('welcome');
-});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/category', 'HomeController@showcat');
+Route::get('/contact', 'HomeController@contact');
+Route::get('/category/{cat}/{car_id}', 'CarController@show');
+Route::get('/category/{category}', 'CarController@showcategcar');
