@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
 {
-     public function imegas(){
+     public function images(){
         return $this->hasMany('App\Image');
     }
     public function category()

@@ -4,7 +4,9 @@
 
 
 @section('content')
-                <div class="home">
+    <!-- Home -->
+
+    <div class="home">
         <div class="home_slider_container">
 
             <!-- Home Slider -->
@@ -96,7 +98,29 @@
                 <div class="col">
 
                     <div class="product_grid">
-                        
+                        @foreach($cars as $cars)
+
+                        <!-- Product -->
+                        @php
+                            //$imega =$cars->imegas[0]['img'];
+                            //dd($cars->category->title);
+                               $image='';
+                               if( count($cars->images) > 0){
+                                    $image =$cars->images[0]['img'];
+                                }else{
+                                    $image='cart.jpg';
+                                }
+                                //dd($cars->images[0]['img']);
+                        @endphp
+                        <div class="product">
+                            <div class="product_image"><img src="/images/{{$image}}" alt=""></div>
+                            <div class="product_extra product_hot"><a href="">Hot</a></div>
+                            <div class="product_content">
+                                <div class="product_title"><a href="category/{{$cars->category->title}}/{{$cars->id}}">{{$cars->category->title}} {{$cars->title}}</a></div>
+                                <div class="product_price">${{$cars->price}}</div>
+                            </div>
+                        </div>
+                            @endforeach
 
 
                     </div>
@@ -164,8 +188,8 @@
                         <div class="newsletter_title">Остались вопросы?</div>
                         <div class="newsletter_text"><p>Свяжитесь с нами , и мы обязательно ответим в течение суток!</p></div>
                         <div class="newsletter_form_container">
-                            <form action="#" id="newsletter_form" class="newsletter_form">
-                                <input type="email" class="newsletter_input" required="required">
+                            <form action="http://carshow/contact" id="newsletter_form" class="newsletter_form">
+
                                 <button class="newsletter_button trans_200"><span>Связаться</span></button>
                             </form>
                         </div>

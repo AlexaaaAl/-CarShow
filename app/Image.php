@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    //
+    public function cars()
+    {
+        return $this->belongsTo('App\Car');
+    }
 }

@@ -16,14 +16,14 @@
 
     <div class="home">
         <div class="home_container">
-            <div class="home_background" style="background-image:url(/images/{{$item->img}})"></div>
+            <div class="home_background" style="background-image:url(/images/{{$category->img}})"></div>
             <div class="home_content_container">
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="home_content">
-                                <div class="home_title">{{$item->title}}<span>.</span></div>
-                                <div class="home_text"><p>{{$item->description}}</p></div>
+                                <div class="home_title">{{$category->title}}<span>.</span></div>
+                                <div class="home_text"><p>{{$category->description}}</p></div>
                             </div>
                         </div>
                     </div>
@@ -48,14 +48,18 @@
                     <div class="product_grid">
 
                         <!-- Product -->
-                    @foreach($item->cars as $cars)
-
+                    @foreach($category->cars as $cars)
+                    @php
+                            
+                            //dd($cars->images[0]['img']);
+                             // @foreach($category->cars as $cars) 
+                        @endphp
                         <!-- Product -->
                         <div class="product">
                             <div class="product_image"><img src="/images/{{$cars->images[0]['img']}}" alt=""></div>
 
                             <div class="product_content">
-                                <div class="product_title"><a href="product.html">{{$cars->title}}</a></div>
+                                <div class="product_title"><a href="{{$cars->category->title}}/{{$cars->id}}">{{$cars->title}}</a></div>
                                 <div class="product_price">${{$cars->price}}</div>
                             </div>
                         </div>

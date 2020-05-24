@@ -92,28 +92,45 @@
                                 <nav class="main_nav">
                                     <ul>
                                         <li >
-                                            <a href="index.html">Главная</a>
+                                            <a href="/">Главная</a>
                                         </li>
                                         <li >
-                                            <a href="categories.html">Автомобили</a>
+                                            <a href="/category">Автомобили</a>
                                         </li>
-                                        <li><a href="#">Дилеры</a></li>
-                                        <li><a href="contact.html">Контакты</a></li>
-                                         @if (Route::has('login'))
-                                            @auth
-                                            <li><a href="{{ url('/home') }}">Cart</a></li>
-                                            @else
-                                            <li><a href="{{ route('login') }}">Login</a></li>
+                                        <li><a href="/dealer">Дилеры</a></li>
+                                        <li><a href="/contact">Контакты</a></li>
+                                        @if (Route::has('login'))
+                                        @auth
+                                        <li><a href="{{ url('/home') }}">Корзина</a></li>
+                                        <li class="nav-item dropdown">
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                {{ Auth::user()->name }} <span class="caret"></span>
+                                            </a>
 
-                                            @if (Route::has('register'))
-                                            <li> <a href="{{ route('register') }}">Register</a></li>
-                                            @endif
-                                            @endauth
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </div>
-                                        @endif
-                                    </ul>
-                                </nav>
-                                
+                                    </li>
+                                    @else
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+
+                                    @if (Route::has('register'))
+                                    <li> <a href="{{ route('register') }}">Register</a></li>
+                                    @endif
+                                    @endauth
+                                </div>
+                                @endif
+                            </ul>
+                        </nav>
+                        
 
                     </div>
                 </div>
@@ -146,85 +163,85 @@
         </ul>
     </div>
 
-    </header>
+</header>
 
-    <!-- Menu -->
+<!-- Menu -->
 
-    <div class="menu menu_mm trans_300">
-        <div class="menu_container menu_mm">
-            <div class="page_menu_content">
+<div class="menu menu_mm trans_300">
+    <div class="menu_container menu_mm">
+        <div class="page_menu_content">
 
-                <div class="page_menu_search menu_mm">
-                    <form action="#">
-                        <input type="search" required="required" class="page_menu_search_input menu_mm" placeholder="Search for products...">
-                    </form>
-                </div>
-                <ul class="page_menu_nav menu_mm">
-                    <li class="page_menu_item menu_mm"><a href="index.html">Главная<i class="fa fa-angle-down"></i></a></li>
-                    <li class="page_menu_item menu_mm"><a href="#">Автомобили<i class="fa fa-angle-down"></i></a></li>
-                    <li class="page_menu_item menu_mm"><a href="contact.html">Дилеры<i class="fa fa-angle-down"></i></a></li>
-                    <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-                </ul>
+            <div class="page_menu_search menu_mm">
+                <form action="#">
+                    <input type="search" required="required" class="page_menu_search_input menu_mm" placeholder="Search for products...">
+                </form>
             </div>
-        </div>
-
-        <div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-
-        <div class="menu_social">
-            <ul>
-                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <ul class="page_menu_nav menu_mm">
+                <li class="page_menu_item menu_mm"><a href="index.html">Главная<i class="fa fa-angle-down"></i></a></li>
+                <li class="page_menu_item menu_mm"><a href="#">Автомобили<i class="fa fa-angle-down"></i></a></li>
+                <li class="page_menu_item menu_mm"><a href="contact.html">Дилеры<i class="fa fa-angle-down"></i></a></li>
+                <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
             </ul>
         </div>
     </div>
 
+    <div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
 
-    <!-- Content-->
+    <div class="menu_social">
+        <ul>
+            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
+</div>
 
-    @yield('content')
-    <!-- Footer -->
 
-    <div class="footer_overlay"></div>
-    <footer class="footer">
-        <div class="footer_background" style="background-image:url(images/footer.jpg)"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="footer_content d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
-                        <div class="footer_logo"><a href="/">Автолидер</a></div>
-                        <div class="copyright ml-auto mr-auto"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Выполнено Студент ВИС42 <i class="fa fa-heart-o" aria-hidden="true"></i>  <a href="https://github.com/AlexaaaAl" target="_blank">Джулай А.Е.</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-                            <div class="footer_social ml-lg-auto">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
+<!-- Content-->
+
+@yield('content')
+<!-- Footer -->
+
+<div class="footer_overlay"></div>
+<footer class="footer">
+    <div class="footer_background" style="background-image:url(images/footer.jpg)"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="footer_content d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
+                    <div class="footer_logo"><a href="/">Автолидер</a></div>
+                    <div class="copyright ml-auto mr-auto"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Выполнено Студент ВИС42 <i class="fa fa-heart-o" aria-hidden="true"></i>  <a href="https://github.com/AlexaaaAl" target="_blank">Джулай А.Е.</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                        <div class="footer_social ml-lg-auto">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+</div>
 
-    <script src="/js/jquery-3.2.1.min.js"></script>
-    <script src="/styles/bootstrap4/popper.js"></script>
-    <script src="/styles/bootstrap4/bootstrap.min.js"></script>
-    <script src="/plugins/greensock/TweenMax.min.js"></script>
-    <script src="/plugins/greensock/TimelineMax.min.js"></script>
-    <script src="/plugins/scrollmagic/ScrollMagic.min.js"></script>
-    <script src="/plugins/greensock/animation.gsap.min.js"></script>
-    <script src="/plugins/greensock/ScrollToPlugin.min.js"></script>
-    <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-    <script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
-    <script src="/plugins/easing/easing.js"></script>
-    <script src="/plugins/parallax-js-master/parallax.min.js"></script>
-    <script src="/js/custom.js"></script>
-    @yield('custom_js')
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/styles/bootstrap4/popper.js"></script>
+<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/greensock/TweenMax.min.js"></script>
+<script src="/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/js/custom.js"></script>
+@yield('custom_js')
 </body>
 </html>

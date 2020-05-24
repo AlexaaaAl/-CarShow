@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
-
+});*/
+Route::get('/', 'HomeController@welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/category', 'HomeController@showcat');
+Route::get('/dealer', 'CarController@dealers');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/category/{cat}/{car_id}', 'CarController@show');
 Route::get('/category/{category}', 'CarController@showcategcar');
