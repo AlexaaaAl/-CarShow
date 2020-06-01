@@ -29,4 +29,11 @@ class CarController extends Controller
             'dealer'=>$dealer
         ]);
     }
+    public function orders($car_id){
+        $car= Car::where('id', $car_id)->first();
+        //dd($item);
+        return view('order',[
+            'car'=>$car
+        ]);
+    }   
 }

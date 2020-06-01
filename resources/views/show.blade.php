@@ -73,7 +73,7 @@
                     <!-- Product Quantity -->
                     <div class="product_quantity_container">
 
-                        <div class="button cart_button"><a href="#">Оформить завку</a></div>
+                        <div class="button cart_button"><a href="/order/{{$item->id}}">Оформить завку</a></div>
                     </div>
 
                     <!-- Share -->

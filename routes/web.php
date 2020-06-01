@@ -22,4 +22,5 @@ Route::get('/category', 'HomeController@showcat');
 Route::get('/dealer', 'CarController@dealers');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/category/{cat}/{car_id}', 'CarController@show');
+Route::get('/order/{car_id}', 'CarController@orders');
 Route::get('/category/{category}', 'CarController@showcategcar');
